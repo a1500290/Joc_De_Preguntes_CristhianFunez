@@ -18,7 +18,9 @@ namespace Joc_De_Preguntes_CristhianFunez
 
 
         }
-        
+        //pas 1
+        //en aquet metode es on estan guardades les preguntes amb el seu respectiu tema
+        //en format "pregunta;respostaCorrecta;respostaIncorrecta;respostaIncorrecta;respostaIncorrecta;"
         static string escollirTema()
         {
             string tema="", opcio;
