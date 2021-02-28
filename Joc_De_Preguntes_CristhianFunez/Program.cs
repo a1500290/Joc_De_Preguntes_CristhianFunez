@@ -72,5 +72,31 @@ namespace Joc_De_Preguntes_CristhianFunez
             } while (opcio == "");
             return tema;
         }
+        //pas 2
+        //escollit el tema, aquet metode carrega el string on es troban les preguntes
+        //i crea una array, on cada element(pregunta) ocupa un lloc
+        static string[] creaArray(string tema, char separador)
+        {
+            string linia;
+            int cont = 0;
+            //conta quants separadors hi ha
+            //per calcula extencio de la array
+            for(int i = 0; i < tema.Length; i++)
+            {
+                if (tema[i] == separador)
+                    cont++;
+            }
+            //crea la array
+            string[] preguntesArray = new string[cont];
+            //aquet "for" posa cada element en un lloc de la array
+            for (int i = 0; i < cont; i++)
+            {
+                linia = tema.Substring(0, tema.IndexOf(separador));
+                tema = tema.Remove(0, tema.IndexOf(separador) + 1);
+                preguntesArray[i] = linia;
+            }
+            
+            return preguntesArray;
+        }
     }
 }
