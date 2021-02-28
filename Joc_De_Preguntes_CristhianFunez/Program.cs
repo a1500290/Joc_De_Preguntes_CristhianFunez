@@ -14,7 +14,11 @@ namespace Joc_De_Preguntes_CristhianFunez
             string tema;
             Console.WriteLine("Juego de preguntas");
             //pas 1
-            tema = escollirTema(); 
+            tema = escollirTema();
+            //pas 2
+            string[] arrayPreguntes = creaArray(tema, '|');
+            //pas 2 plus
+            arrayPreguntes = aleatorizaArray(arrayPreguntes);
 
 
         }
