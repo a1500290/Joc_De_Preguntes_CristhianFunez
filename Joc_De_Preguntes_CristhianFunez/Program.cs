@@ -116,5 +116,53 @@ namespace Joc_De_Preguntes_CristhianFunez
             }
             return preguntesArray;
         }
+        //pas 3
+        // a priori, mostra la pregunta, mostra les opcions
+        // i escrius la opcio que creus correcta
+        static void ferPreguntes(string[] arrayPreguntes)
+        {
+            int preguntesFetes = 0;
+            string opcio = "", enunciat, respostaCorrecta;
+            Console.WriteLine("Escull la resposta correcta o prem 'Q' per surti");
+            do
+            {
+                // crea una nova array, on el anunciat i cada opcio de la pregunta ocupa un lloc
+                string[] Opcions = creaArray(arrayPreguntes[preguntesFetes], ';');
+
+                //declaro el enunciat i la resposta correcta
+                enunciat = Opcions[0];
+                respostaCorrecta = Opcions[1];
+
+                //elimino el enunciat de la array, per despres aleatoritza
+                Opcions = eliminaEnunciat(Opcions);
+
+                //aleatoritza la array de opcions perque la resposta sigui dinamica, i no sempre sigui la resposta "1","1","1"...
+                //perque per defecte la resposta correcta la opcio "1"
+                Opcions = aleatorizaArray(Opcions);
+                //diu el anunciat
+                Console.WriteLine(enunciat);
+                for(int i = 0; i < Opcions.Length; i++)
+                {
+                    //diu les opcions
+                    Console.WriteLine("{0} ) {1}",i+1,Opcions[i]);
+                }
+                //escrius la resposta
+                opcio = Console.ReadLine();
+                try
+                {
+                    if(Opcions[(Convert.ToInt32(opcio))-1] == respostaCorrecta)
+                        Console.WriteLine("Correcte");
+                    else
+                        Console.WriteLine("Incorrecte");
+                }
+                catch { if (opcio == "Q")
+                        Main();
+                else
+                        Console.WriteLine("Incorrecta");
+                }
+                preguntesFetes++;
+            } while (opcio != "Q" && preguntesFetes < arrayPreguntes.Length);
+            Main();
+        }
     }
 }
