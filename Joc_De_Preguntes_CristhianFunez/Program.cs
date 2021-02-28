@@ -14,7 +14,11 @@ namespace Joc_De_Preguntes_CristhianFunez
             string tema;
             Console.WriteLine("Juego de preguntas");
             //pas 1
-            tema = escollirTema(); 
+            tema = escollirTema();
+            //pas 2
+            string[] arrayPreguntes = creaArray(tema, '|');
+            //pas 2 plus
+            arrayPreguntes = aleatorizaArray(arrayPreguntes);
 
 
         }
@@ -67,6 +71,48 @@ namespace Joc_De_Preguntes_CristhianFunez
                 }
             } while (opcio == "");
             return tema;
+        }
+        //pas 2
+        //escollit el tema, aquet metode carrega el string on es troban les preguntes
+        //i crea una array, on cada element(pregunta) ocupa un lloc
+        static string[] creaArray(string tema, char separador)
+        {
+            string linia;
+            int cont = 0;
+            //conta quants separadors hi ha
+            //per calcula extencio de la array
+            for(int i = 0; i < tema.Length; i++)
+            {
+                if (tema[i] == separador)
+                    cont++;
+            }
+            //crea la array
+            string[] preguntesArray = new string[cont];
+            //aquet "for" posa cada element en un lloc de la array
+            for (int i = 0; i < cont; i++)
+            {
+                linia = tema.Substring(0, tema.IndexOf(separador));
+                tema = tema.Remove(0, tema.IndexOf(separador) + 1);
+                preguntesArray[i] = linia;
+            }
+            
+            return preguntesArray;
+        }
+        //pas 2, plus meu
+        //per evitar que les preguntes surtin sempre en el ordre que les vaix
+        //escriure, aquet metode aleatoritza els elements de la array
+        static string[] aleatorizaArray(string[] preguntesArray)
+        {
+            int n = preguntesArray.Length;
+            Random rnd = new Random();
+            for (int i = n - 1; i > 0; i--)
+            {
+                int j = rnd.Next(0, i);
+                string temp = preguntesArray[i];
+                preguntesArray[i] = preguntesArray[j];
+                preguntesArray[j] = temp;
+            }
+            return preguntesArray;
         }
     }
 }
