@@ -19,6 +19,8 @@ namespace Joc_De_Preguntes_CristhianFunez
             string[] arrayPreguntes = creaArray(tema, '|');
             //pas 2 plus
             arrayPreguntes = aleatorizaArray(arrayPreguntes);
+            //pas 3
+            ferPreguntes(arrayPreguntes);
 
 
         }
