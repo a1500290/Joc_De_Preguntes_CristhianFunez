@@ -164,5 +164,15 @@ namespace Joc_De_Preguntes_CristhianFunez
             } while (opcio != "Q" && preguntesFetes < arrayPreguntes.Length);
             Main();
         }
+        //metode del pas 3
+        static string[] eliminaEnunciat(string[] Opcions)
+        {
+            string[] opcionSenseAnunciat = new string[Opcions.Length - 1];
+            for(int i = 0; i < Opcions.Length - 1; i++)
+            {
+                opcionSenseAnunciat[i] = Opcions[i + 1];
+            }
+            return opcionSenseAnunciat;
+        }
     }
 }
