@@ -98,5 +98,21 @@ namespace Joc_De_Preguntes_CristhianFunez
             
             return preguntesArray;
         }
+        //pas 2, plus meu
+        //per evitar que les preguntes surtin sempre en el ordre que les vaix
+        //escriure, aquet metode aleatoritza els elements de la array
+        static string[] aleatorizaArray(string[] preguntesArray)
+        {
+            int n = preguntesArray.Length;
+            Random rnd = new Random();
+            for (int i = n - 1; i > 0; i--)
+            {
+                int j = rnd.Next(0, i);
+                string temp = preguntesArray[i];
+                preguntesArray[i] = preguntesArray[j];
+                preguntesArray[j] = temp;
+            }
+            return preguntesArray;
+        }
     }
 }
